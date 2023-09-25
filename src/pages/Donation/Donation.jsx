@@ -7,6 +7,7 @@ const Donation = () => {
 
     const [donation, setDonation] = useState([]);
     const [noFound, setNoFound] = useState(false);
+    const [isShow, setIsShow] = useState(false);
 
     useEffect(()=>{
         const donationItems = JSON.parse(localStorage.getItem('donation'));
@@ -19,18 +20,27 @@ const Donation = () => {
         }
     },[])
 
-    console.log(donation);
+    // console.log(donation);
+    // const handleRemove = ()=>{
+    //     // localStorage.clear();
+    //     // setDonation([]);
+    //     // setNoFound('No Data Found');
+    // }
 
     return (
         <div>
-            {noFound? <p className="h-[80vh] flex justify-center items-center">{noFound}</p> 
+            {noFound ? <p className="h-[80vh] flex justify-center items-center">{noFound}</p> 
             : 
             <div>
+                {/* {donation.length > 0 && <button onClick={handleRemove()} className="px-2 mb-5 rounded text-white font-semibold bg-[#ed3131] mx-auto justify-center items-center">Deleted All</button>} */}
                 
                 <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-5">
-                    {donation.map(card=> <DonationCard key={card.id} card={card}></DonationCard>)}
+                    {
+                        isShow ? donation.map((card)=> (<DonationCard key={card.id} card={card}></DonationCard>))
+                        : donation.slice(0,4).map((card)=> (<DonationCard key={card.id} card={card}></DonationCard>))
+                    }
                 </div>
-
+                <button onClick={()=>setIsShow(!isShow)} className="px-2 mt-8 ml-10 mb-5 rounded text-white font-semibold bg-[#ed3131] mx-auto justify-center text-center">{isShow ? "" : "See more"}</button>
             </div>}
         </div>
     );
