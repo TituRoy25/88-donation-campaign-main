@@ -1,22 +1,32 @@
 import swal from 'sweetalert';
 
-const SingleCard = ({card}) => {
+const SingleCard = ({ card }) => {
 
     const { id, picture, title, text_color, price, description } = card || {}
 
-    const handleAddToDonation = ()=>{
-        
+    const handleAddToDonation = () => {
+
         const addedDonationArray = [];
-        const donationItems = JSON.parse(localStorage.getItem('donation'))
-        if (donationItems){
-            addedDonationArray.push(card)
-            localStorage.setItem('donation',JSON.stringify(addedDonationArray))
+        const donationItems = JSON.parse(localStorage.getItem('donation'));
+        
+        if (!donationItems) {
+            addedDonationArray.push(card);
+            localStorage.setItem('donation', JSON.stringify(addedDonationArray));
             swal("Successfully Donated!", "You clicked the button!", "success");
         }
-        else{
-            addedDonationArray.push(...donationItems,card)
-            localStorage.setItem('donation',JSON.stringify(addedDonationArray))
-            swal("Successfully Donated!", "You clicked the button!", "success");
+        else {
+            const isExits = donationItems.find(card => card.id == id)
+            
+            if (!isExits) {
+                addedDonationArray.push(...donationItems, card);
+                localStorage.setItem('donation', JSON.stringify(addedDonationArray));
+                swal("Successfully Donated!", "You clicked the button!", "success");
+            }
+            else{
+                swal("Already Donated!", "You clicked the button!", "error");
+            }
+
+
         }
 
     }
