@@ -9,16 +9,16 @@ const Donation = () => {
     const [noFound, setNoFound] = useState(false);
     const [isShow, setIsShow] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         const donationItems = JSON.parse(localStorage.getItem('donation'));
-        
-        if(donationItems){
+
+        if (donationItems) {
             setDonation(donationItems);
         }
-        else{
+        else {
             setNoFound('No Data Found');
         }
-    },[])
+    }, [])
 
     // console.log(donation);
     // const handleRemove = ()=>{
@@ -29,21 +29,22 @@ const Donation = () => {
 
     return (
         <div>
-            {noFound ? <p className="h-[80vh] flex justify-center items-center">{noFound}</p> 
-            : 
-            <div>
-                {/* {donation.length > 0 && <button onClick={handleRemove()} className="px-2 mb-5 rounded text-white font-semibold bg-[#ed3131] mx-auto justify-center items-center">Deleted All</button>} */}
-                
-                <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-5">
-                    {
-                        isShow ? donation.map((card)=> (<DonationCard key={card.id} card={card}></DonationCard>))
-                        : donation.slice(0,4).map((card)=> (<DonationCard key={card.id} card={card}></DonationCard>))
-                    }
-                </div>
-                {
-                    donation.length > 4 && <button onClick={()=>setIsShow(!isShow)} className="px-2 ml-10 mb-5 rounded text-white font-semibold bg-[#009444] mx-auto justify-center text-center">{isShow ? "" : "See All"}</button>
-                }
-            </div>}
+            {noFound ? (<p className="h-[80vh] flex justify-center items-center">{noFound}</p>)
+                : 
+                (<div>
+                    {/* {donation.length > 0 && <button onClick={handleRemove()} className="px-2 mb-5 rounded text-white font-semibold bg-[#ed3131] mx-auto justify-center items-center">Deleted All</button>} */}
+
+                    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+                        {
+                            isShow ? donation.map((card) => (<DonationCard key={card.id} card={card}></DonationCard>))
+                                : donation.slice(0, 4).map((card) => (<DonationCard key={card.id} card={card}></DonationCard>))
+                        }
+                    </div>
+                        {
+                            donation.length > 4 && <button onClick={() => setIsShow(!isShow)} className="px-2 mt-2 text-white font-semibold bg-[#009444] block mx-auto rounded">{isShow ? "" : "See All"}</button>
+                        }
+                    
+                </div>)}
         </div>
     );
 };

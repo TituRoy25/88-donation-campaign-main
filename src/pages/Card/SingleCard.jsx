@@ -38,7 +38,7 @@ const SingleCard = ({ card }) => {
                 <div className="relative m-0    bg-transparent bg-clip-border text-gray-700 shadow-none">
                     <div className="">
                         <img
-                            className=" w-[1320px] h-[700px]"
+                            className=" w-[1300px] h-[500px]"
                             src={picture}
                             alt="ui/ux review check"
                         />
@@ -53,7 +53,7 @@ const SingleCard = ({ card }) => {
                         </button>
                     </div>
                 </div>
-                <div className="mt-10">
+                <div className="mt-5">
                     <h4 className="block font-sans text-2xl font-semibold text-black leading-snug tracking-normal text-blue-gray-900 antialiased">
                         {title}
                     </h4>
