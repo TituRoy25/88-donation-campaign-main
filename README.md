@@ -1,8 +1,7 @@
-# React + Vite
+Features:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Each card Donate price button can be selected once & show sweetalert "Successfully Donated!", when second time selection it will show a sweetalert "Already Donated!" on the display.
+* When any card Donate price button not be selected. By default on the Donation page will appear "No Data Found".
+* The See All button on the Donation page will appear when the Donation cards
+are more than 4. On clicking the See All button the remaining data will be
+shown and the See All button will be hidden.
