@@ -22,13 +22,8 @@ const CatagoryCard = ({ card }) => {
                         <h4 className="block font-sans text-[18px] leading-snug tracking-normal text-blue-gray-900 antialiased">
                             {title}
                         </h4>
-                        <p className="mt-2 block text-sm leading-relaxed text-gray-700 antialiased">
-
-                        </p>
                     </div>
-                    <div className="flex items-center justify-between p-2">
-
-                    </div>
+                    
                 </div>
             </NavLink>
 
