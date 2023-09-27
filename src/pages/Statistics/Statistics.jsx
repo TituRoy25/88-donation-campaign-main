@@ -1,9 +1,10 @@
+import StatisticsPieChart from "./StatisticsPieChart";
 
 
 const Statistics = () => {
     return (
         <div>
-            Statistics
+            <StatisticsPieChart></StatisticsPieChart>
         </div>
     );
 };
